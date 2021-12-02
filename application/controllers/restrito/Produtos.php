@@ -7,9 +7,9 @@ class Produtos extends CI_Controller {
 		parent::__construct(); 
     
         //Esiste uma sessao
-        //if(!$this->ion_auth->logged_in()){
-        //    redirect('restrito/login'); 
-        //}
+        if(!$this->ion_auth->logged_in()){
+            redirect('restrito/login'); 
+        }
     }
     
 
@@ -49,7 +49,7 @@ class Produtos extends CI_Controller {
 
         if(!$produto_id){
         // CADASTRANDO --------------------------------
-        $this->form_validation->set_rules('produto_nome','Nome do produto','trim|required|min_length[4]|max_length[40]|callback_valida_nome_produto');
+        $this->form_validation->set_rules('produto_nome','Nome do produto','trim|required|min_length[4]|max_length[140]|callback_valida_nome_produto');
         $this->form_validation->set_rules('produto_categoria_id','Categoria do produto','trim|required');
         $this->form_validation->set_rules('produto_marca_id','Marca do produto','trim|required');
         $this->form_validation->set_rules('produto_valor','Valor de venda do produto','trim|required');
@@ -180,7 +180,7 @@ class Produtos extends CI_Controller {
             }else{
                 //Iniziamo l' edizione dei prodotti
 
-                $this->form_validation->set_rules('produto_nome','Nome do produto','trim|required|min_length[4]|max_length[40]|callback_valida_nome_produto');
+                $this->form_validation->set_rules('produto_nome','Nome do produto','trim|required|min_length[4]|max_length[140]|callback_valida_nome_produto');
                 $this->form_validation->set_rules('produto_categoria_id','Categoria do produto','trim|required');
                 $this->form_validation->set_rules('produto_marca_id','Marca do produto','trim|required');
                 $this->form_validation->set_rules('produto_valor','Valor de venda do produto','trim|required');

@@ -4,7 +4,7 @@
 
     
     class Produtos_model extends CI_Model{
-    // Utilizado na area restrita
+        // Utilizado na area restrita
         public function get_all(){
             $this->db->select([
                 'produtos.produto_id', 
@@ -12,6 +12,7 @@
                 'produtos.produto_nome', 
                 'produtos.produto_valor', 
                 'produtos.produto_ativo', 
+                'produtos.produto_peso', 
                 'categorias.categoria_id', 
                 'categorias.categoria_nome', 
                 'marcas.marca_nome', 
@@ -26,13 +27,14 @@
         }
 
         
-    // Recupera o produto para detalhalo    
+        // Recupera o produto para detalhalo    
         public function get_by_id($produto_meta_link = null){
             $this->db->select([
                 'produtos.produto_id', 
                 'produtos.produto_codigo', 
                 'produtos.produto_nome', 
                 'produtos.produto_valor', 
+                'produtos.produto_peso', 
                 'produtos.produto_meta_link',
                 'produtos.produto_quantidade_estoque',  
                 'produtos.produto_descricao',  
@@ -52,9 +54,119 @@
             $this->db->join('categorias', 'categorias.categoria_id =produtos.produto_categoria_id'); 
             $this->db->join('categorias_pai', 'categorias_pai.categoria_pai_id =categorias.categoria_pai_id'); 
             
+            //$this->db->limit(1);
+
             return $this->db->get('produtos')->row(); 
         }
 
+
+        //Recupera tutti i prodotti di quella categoria
+        public function get_all_by($condicoes = null){
+
+            $this->db->select([
+                'produtos.produto_nome', 
+                'produtos.produto_valor',
+                'produtos.produto_meta_link',
+
+                'categorias_pai.categoria_pai_nome',
+                'categorias_pai.categoria_pai_meta_link',
+                'categorias.categoria_nome', 
+
+                'produtos_fotos.foto_caminho',
+
+            ]);
+
+            $this->db->where('produtos.produto_ativo', 1); 
+
+            if($condicoes && is_array($condicoes)){
+                $this->db->where($condicoes); 
+            }
+
+
+            $this->db->join('categorias', 'categorias.categoria_id = produtos.produto_categoria_id', 'LEFT'); 
+            $this->db->join('marcas', 'marcas.marca_id = produtos.produto_marca_id', 'LEFT'); 
+            $this->db->join('categorias_pai', 'categorias_pai.categoria_pai_id = categorias.categoria_pai_id', 'LEFT'); 
+            $this->db->join('produtos_fotos', 'produtos_fotos.foto_produto_id = produtos.produto_id', 'LEFT'); 
+
+            //Retorna apena una foto
+            $this->db->group_by('produtos.produto_id'); 
+
+            return $this->db->get('produtos')->result(); 
+
+        }
+
+
+        //Recupera 5 prodotti categoria acessoria
+        public function get_all_by_cachorro(){
+            $this->db->select([
+                'produtos.produto_nome', 
+                'produtos.produto_valor',
+                'produtos.produto_meta_link',
+
+                'categorias_pai.categoria_pai_nome',
+                'categorias_pai.categoria_pai_meta_link',
+                'categorias.categoria_nome', 
+
+                'produtos_fotos.foto_caminho',
+
+            ]);
+
+            $this->db->where('produtos.produto_ativo', 1); 
+            $this->db->where('categorias_pai.categoria_pai_id', 3); 
+            
+
+
+            $this->db->join('categorias', 'categorias.categoria_id = produtos.produto_categoria_id', 'LEFT'); 
+            $this->db->join('marcas', 'marcas.marca_id = produtos.produto_marca_id', 'LEFT'); 
+            $this->db->join('categorias_pai', 'categorias_pai.categoria_pai_id = categorias.categoria_pai_id', 'LEFT'); 
+            $this->db->join('produtos_fotos', 'produtos_fotos.foto_produto_id = produtos.produto_id', 'LEFT'); 
+            
+            $this->db->limit(1);
+            //Retorna apena una foto
+            $this->db->group_by('produtos.produto_id'); 
+
+            return $this->db->get('produtos')->result(); 
+
+        }
+
+
+         // Recupera os produto de acordo com a busca
+         public function get_all_by_busca($busca = null){
+            if($busca){
+                $this->db->select([
+                    'produtos.produto_nome', 
+                    'produtos.produto_valor',
+                    'produtos.produto_meta_link',
+    
+                    'categorias_pai.categoria_pai_nome',
+                    'categorias_pai.categoria_pai_meta_link',
+                    'categorias.categoria_nome', 
+    
+                    'produtos_fotos.foto_caminho',
+    
+                ]);
+    
+                $this->db->where('produtos.produto_ativo', 1); 
+                $this->db->like('produtos.produto_nome', $busca, 'BOTH'); 
+                
+    
+    
+                $this->db->join('categorias', 'categorias.categoria_id = produtos.produto_categoria_id', 'LEFT'); 
+                $this->db->join('marcas', 'marcas.marca_id = produtos.produto_marca_id', 'LEFT'); 
+                $this->db->join('categorias_pai', 'categorias_pai.categoria_pai_id = categorias.categoria_pai_id', 'LEFT'); 
+                $this->db->join('produtos_fotos', 'produtos_fotos.foto_produto_id = produtos.produto_id', 'LEFT'); 
+                
+               
+                
+                $this->db->group_by('produtos.produto_id'); 
+    
+                return $this->db->get('produtos')->result(); 
+
+
+            }else{
+                return false; 
+            }
+         }    
     }
 
     

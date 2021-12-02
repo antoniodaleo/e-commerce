@@ -28,6 +28,7 @@ class Produto extends CI_Controller {
               
               'mask/jquery.mask.min.js',
               'mask/custom.js',
+              'js/add_produto.js',
           ),
           
       ); 

@@ -7,9 +7,9 @@ class Master extends CI_Controller {
 		 parent::__construct(); 
     
          if(!$this->ion_auth->logged_in()){
-             redirect('restrito/login'); 
+            redirect('restrito/login'); 
          }
-        //Esiste uma sessa
+       
     }
 
 

@@ -6,13 +6,22 @@
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-        <?php echo (isset($titulo) ? '<title> Loja Virtual | '.$titulo.' </title>': '<title>Loja virtual | Vendo tudo</title>') ?>
+        <?php echo (isset($titulo) ? '<title> Sousa Rações | '.$titulo.' </title>': '<title>Sousa Rações | Pet Shop</title>') ?>
 
-        
-        <meta name="description" content="">
+        <meta http-equiv="content-language" content="pt-br">
+        <meta name="description" content="Variedade de marcas de ração de qualidade pelo menor preço em Maracanaú, Ceará. Retire na Loja com 5% OFF..">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="Agência TwinCode">
+	<meta name="keywords" content="pets , ração , cachorro , gato ,maracanaú">
+        <meta name="robots" content="index,follow">
+        <meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+
+        <meta name="author" content="Agência TwinCode">
+        <meta name="reply-to" content="antoniodaleofx@gmail.com">
+
+
         <!-- Favicon -->
-        <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png">
+        <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url('assets/web/images/favicon.png') ?>">
         <!-- Material Design Iconic Font-V2.2.0 -->
         <link rel="stylesheet" href="<?php echo base_url('assets/web/css/material-design-iconic-font.min.css') ?>">
         <!-- Font Awesome -->

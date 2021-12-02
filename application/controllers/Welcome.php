@@ -21,10 +21,14 @@ class Welcome extends CI_Controller {
       $data = array(
         'titulo' => 'Seja muito bem vindo(a) á '.$sistema->sistema_nome_fantasia,
         'produtos_destaques' => $this->loja_model->get_produtos_destaques($sistema->sistema_produtos_destaques),
+        'produtos_cachorros' => $this->loja_model->get_produtos_cachorro(), 
+        'acessorio_cachorro'=> $this->loja_model->get_acessorio_cachorro(),  
+        'higiene_cachorro'=> $this->loja_model->get_higiene_cachorro(),
+        'acessorio_gato'=> $this->loja_model->get_acessorio_gato(),  
       );
 
       //echo '<pre>';
-      //print_r($data['produtos_destaques']);
+      //print_r($data['acessorio_cachorro']);
       //exit();
 
       $this->load->view('web/layout/header',$data);
@@ -33,23 +37,5 @@ class Welcome extends CI_Controller {
     }
 
 
-    public function enviar(){
-      $connect = new PDO("mysql:host=localhost;dbname=db_comunidade", "root", "");
-
-      $data = [
-        'email_descricao' => $_POST["email_descricao"],
-      ];
-
-      $stmt = $connect->prepare('INSERT INTO email (email_descricao) values (:email_descricao)');
-
-        try{
-          $connect->beginTransaction();
-          $stmt->execute($data);
-          $connect->commit();
-          echo 'Registro salvo com sucesso';
-        }catch (Exception $e) {
-          $connect->rollback();
-          throw $e;
-        }
-    }
+    
 }

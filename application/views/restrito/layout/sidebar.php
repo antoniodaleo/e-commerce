@@ -10,15 +10,7 @@
             <li class="dropdown <?php echo $this->router->fetch_class() == 'home' && $this->router->fetch_method() == 'index' ? 'active' : '' ?>">
               <a href="<?php echo base_url('restrito/home');  ?>" class="nav-link"><i data-feather="home"></i><span>Dashboard</span></a>
             </li>
-            <li class="dropdown">
-              <a href="#" class="menu-toggle nav-link has-dropdown"><i
-                  data-feather="briefcase"></i><span>Widgets</span></a>
-              <ul class="dropdown-menu">
-                <li><a class="nav-link" href="widget-chart.html">Chart Widgets</a></li>
-                <li><a class="nav-link" href="widget-data.html">Data Widgets</a></li>
-              </ul>
-            </li>
-
+           
             <li class="dropdown <?php echo $this->router->fetch_class() == 'usuario' && $this->router->fetch_method() == 'index' ? 'active' : '' ?>">
               <a href="<?php echo base_url('restrito/usuario');  ?>" class="nav-link "><i data-feather="users"></i><span>Usuario</span></a>
             </li>

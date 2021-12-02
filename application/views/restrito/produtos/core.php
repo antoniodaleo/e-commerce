@@ -26,7 +26,7 @@
                     }
                   ?>
 
-                  <?php echo form_open('restrito/produtos/core/'.$produto_id); ?>
+                  <?php echo form_open('restrito/produtos/core/'.$produto_id,$attributos); ?>
 
                     <div class="card-body">
 
