@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 06-Fev-2021 às 09:06
+-- Tempo de geração: 02-Dez-2021 às 20:33
 -- Versão do servidor: 10.4.14-MariaDB
 -- versão do PHP: 7.4.9
 
@@ -42,10 +42,13 @@ CREATE TABLE `categorias` (
 --
 
 INSERT INTO `categorias` (`categoria_id`, `categoria_pai_id`, `categoria_nome`, `categoria_ativa`, `categoria_meta_link`, `categoria_data_criacao`, `categoria_data_alteracao`) VALUES
-(1, 2, 'Monitor', 1, 'monitor', '2021-01-15 12:13:15', '2021-01-21 23:33:28'),
-(3, 2, 'Cpu Desktop', 1, 'cpu-desktop', '2021-01-21 23:33:57', '2021-01-21 23:33:57'),
-(4, 3, 'Teclado', 1, 'teclado', '2021-01-21 23:34:10', '2021-01-21 23:34:10'),
-(5, 4, 'Mouse', 1, 'mouse', '2021-01-21 23:34:21', '2021-01-24 17:45:29');
+(1, 2, 'Ração para gato', 1, 'racao-para-gato', '2021-01-15 12:13:15', '2021-08-22 10:57:34'),
+(3, 3, 'Ração para cachorro', 1, 'racao-para-cachorro', '2021-01-21 23:33:57', '2021-08-22 10:57:58'),
+(4, 2, 'Petiscos para gatos', 1, 'petiscos-para-gatos', '2021-01-21 23:34:10', '2021-08-22 10:58:17'),
+(5, 3, 'Petiscos para cachorros', 1, 'petiscos-para-cachorros', '2021-01-21 23:34:21', '2021-08-22 10:58:44'),
+(6, 5, 'Alimentação', 1, 'alimentacao', '2021-08-22 12:01:32', '2021-08-22 12:01:59'),
+(7, 5, 'Acessorios', 1, 'acessorios', '2021-08-22 12:03:57', '2021-08-22 12:03:57'),
+(8, 6, 'Colar para cachorro', 1, 'colar-para-cachorro', '2021-08-31 09:06:39', '2021-08-31 09:06:39');
 
 -- --------------------------------------------------------
 
@@ -67,9 +70,10 @@ CREATE TABLE `categorias_pai` (
 --
 
 INSERT INTO `categorias_pai` (`categoria_pai_id`, `categoria_pai_nome`, `categoria_pai_ativa`, `categoria_pai_meta_link`, `categoria_pai_data_criacao`, `categoria_pai_data_alteracao`) VALUES
-(2, 'Informatica', 1, 'informatica', '2021-01-15 00:11:42', '2021-01-15 00:11:42'),
-(3, 'Acessorios', 1, 'acessorios', '2021-01-15 00:15:47', '2021-01-15 00:15:47'),
-(4, 'Jogos', 1, 'jogos', '2021-01-15 13:03:50', '2021-01-15 13:03:50');
+(2, 'Gatos', 1, 'gatos', '2021-01-15 00:11:42', '2021-01-15 00:11:42'),
+(3, 'Cachorros', 1, 'cachorros', '2021-01-15 00:15:47', '2021-01-15 00:15:47'),
+(5, 'Pássoros', 1, 'passoros', '2021-08-22 12:01:04', '2021-08-22 12:01:04'),
+(6, 'Acessorios', 1, 'acessorios', '2021-08-31 08:46:37', '2021-08-31 08:46:37');
 
 -- --------------------------------------------------------
 
@@ -161,8 +165,11 @@ CREATE TABLE `marcas` (
 --
 
 INSERT INTO `marcas` (`marca_id`, `marca_nome`, `marca_meta_link`, `marca_ativa`, `marca_data_criacao`, `marca_data_alteracao`) VALUES
-(1, 'DELL', 'dell', 1, '2021-01-13 00:19:26', '2021-01-21 23:31:48'),
-(3, 'LENOVO', 'lenovo', 1, '2021-01-13 13:20:29', '2021-01-21 23:32:00');
+(1, 'Golden', 'golden', 1, '2021-01-13 00:19:26', '2021-08-22 11:00:50'),
+(3, 'Gran Plus', 'gran-plus', 1, '2021-01-13 13:20:29', '2021-08-22 11:01:43'),
+(8, 'Purina', 'purina', 1, '2021-08-22 11:02:14', NULL),
+(9, 'Magnus', 'magnus', 1, '2021-08-22 11:02:40', NULL),
+(10, 'Tratto', 'tratto', 1, '2021-08-22 11:12:26', NULL);
 
 -- --------------------------------------------------------
 
@@ -196,8 +203,12 @@ CREATE TABLE `produtos` (
 --
 
 INSERT INTO `produtos` (`produto_id`, `produto_codigo`, `produto_data_cadastro`, `produto_categoria_id`, `produto_marca_id`, `produto_nome`, `produto_meta_link`, `produto_peso`, `produto_altura`, `produto_largura`, `produto_comprimento`, `produto_valor`, `produto_destaque`, `produto_controlar_estoque`, `produto_quantidade_estoque`, `produto_ativo`, `produto_descricao`, `produto_data_alteracao`) VALUES
-(11, NULL, '2021-01-24 18:59:44', 1, 3, 'Cpu para mesa', 'cpu-para-mesa', 1, 2, 2, 2, '1000.00', 1, 1, 32, 1, 'mouse mousemouse mousemouse mouse', NULL),
-(12, '82593641', '2021-01-25 10:16:35', 5, 3, 'Mouse', 'mouse', 1, 1, 1, 1, '12.00', 1, 1, 12, 1, 'MOUSE PARA DESKTOP', NULL);
+(11, '126165', '2021-01-24 18:59:44', 3, 3, 'Ração para Gatos Adultos Castrados Sabor Carne', 'racao-para-gatos-adultos-castrados-sabor-carne', 5, 16, 16, 20, '52.00', 0, 1, 32, 1, 'Indicada para gatos adultos, formulada com ótimos níveis de taurina, proporciona saúde urinária e pH equilibrado, livre de corantes e aromatizantes artificiais, disponível em embalagens de 1 kg, 3 kg e 10,1 kg.', NULL),
+(12, '82593641', '2021-01-25 10:16:35', 3, 10, 'Ração Golden para Gatos Adultos Castrados Sabor Carne', 'racao-golden-para-gatos-adultos-castrados-sabor-carne', 1, 1, 1, 1, '8.50', 1, 1, 30, 1, '- Indicada para gatos;\r\n- Alimento úmido 100% completo e balanceado;\r\n- Feito com deliciosos pedacinhos cozidos ao vapor;\r\n- Atende os paladares mais exigentes;\r\n- Não possui transgênicos, conservantes, aromas e corantes artificiais;\r\n- Contribui para a saúde da pele e do pelo: com ômega 6, zinco e vitamina A;\r\n- Aulixia no trato urinário: desenvolvido com quantidades adequadas de minerais para auxiliar no controle do pH urinário;\r\n- Disponível em embalagem com 85g.', NULL),
+(13, '69540712', '2021-08-22 11:37:21', 7, 1, 'Ração Golden para Gatos Adultos Sabor Salmão', 'racao-golden-para-gatos-adultos-sabor-salmao', 5, 10, 10, 2, '60.00', 1, 1, 20, 1, '- Indicada para gatos adultos;\r\n- Formulada com ótimos níveis de taurina;\r\n- Proporciona saúde urinária e pH equilibrado;\r\n- Livre de corantes e aromatizantes artificiais,\r\n- Disponível em embalagens de 1 kg, 3 kg e 10,1 kg.', NULL),
+(14, '40983256', '2021-08-22 11:39:10', 7, 1, 'Ração Golden Fórmula Senior para Cães Adultos Sabor Frango e Arroz', 'racao-golden-formula-senior-para-caes-adultos-sabor-frango-e-arroz', 1, 15, 15, 15, '45.00', 1, 1, 40, 1, '- Indicada para cães adultos;\r\n- Específica para os pets com mais de 7 anos de idade;\r\n- Proporciona proteção articular;\r\n- Oferece aporte nutricional ideal e balanceado;\r\n- Auxilia no controle de peso,\r\n- Disponível em embalagem com 15 kg.', NULL),
+(15, '05721468', '2021-08-22 11:41:36', 7, 1, 'Ração Golden Power Training para Cães Adultos Sabor Frango e Arroz', 'racao-golden-power-training-para-caes-adultos-sabor-frango-e-arroz', 5, 26, 26, 20, '149.90', 1, 1, 37, 1, '- Indicada para cães adultos;\r\n- Ideal para os pets que participam de competições ou que praticam atividades físicas intensas;\r\n- Contém Condroitina e Glicosamina que auxiliam na manutenção das articulações;\r\n- Proporciona maior disposição e rápido restabelecimento físico após exercícios,\r\n- Disponível em embalagens de 15 kg.', NULL),
+(16, '87462593', '2021-08-31 09:09:21', 3, 1, 'Colar Sant Antonio', 'colar-sant-antonio', 10, 2, 2, 2, '25.00', 0, 1, 10, 1, 'Colar para garra', NULL);
 
 -- --------------------------------------------------------
 
@@ -216,8 +227,12 @@ CREATE TABLE `produtos_fotos` (
 --
 
 INSERT INTO `produtos_fotos` (`foto_id`, `foto_produto_id`, `foto_caminho`) VALUES
-(28, 11, 'ftz.jpg'),
-(29, 12, '42d007b49ee42d612bd3c8196d4ca68b.jpg');
+(61, 11, 'd6537c39ef34047d296b8abcc51e443c.jpg'),
+(62, 15, 'd69ee96b9cb841b87fd80adf1df57212.jpg'),
+(63, 14, 'be9740878dee6ea61c55865cd8dac70d.jpg'),
+(64, 13, 'df000ccb2aa75ee5e376a49869ece9ad.jpg'),
+(65, 16, '8f9d9148d7cbaaf96e8a4c5697e252c3.jpg'),
+(66, 12, '995116a7812eb8dd19ea102cfe159216.jpg');
 
 -- --------------------------------------------------------
 
@@ -250,7 +265,7 @@ CREATE TABLE `sistema` (
 --
 
 INSERT INTO `sistema` (`sistema_id`, `sistema_razao_social`, `sistema_nome_fantasia`, `sistema_cnpj`, `sistema_ie`, `sistema_telefone_fixo`, `sistema_telefone_movel`, `sistema_email`, `sistema_site_url`, `sistema_cep`, `sistema_endereco`, `sistema_numero`, `sistema_cidade`, `sistema_estado`, `sistema_produtos_destaques`, `sistema_texto`, `sistema_data_alteracao`) VALUES
-(1, 'Loja virtual Inc v', 'Vende tudo!', '80.838.809/0001-26', '683.90228-49', '(41) 3232-3030', '(41) 9999-9999', 'vendetudo@contato.com.br', 'http://vendetudo.com.br', '80510-000', 'Rua da Programação', '54', 'Curitiba', 'CE', 6, 'Preço e qualidade!', '2021-01-12 12:55:17');
+(1, 'Rações Sousa', 'Rações Sousa', '80.838.809/0001-26', '683.90228-49', '85988601287', '85988601286', 'racoessouza@contato.com', 'http://racaosouza.com.br', '80510-000', 'Rua maracanau', '54', 'Maracanau', 'CE', 6, 'Preço e qualidade!', '2021-08-22 13:21:06');
 
 -- --------------------------------------------------------
 
@@ -285,7 +300,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `email`, `activation_selector`, `activation_code`, `forgotten_password_selector`, `forgotten_password_code`, `forgotten_password_time`, `remember_selector`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`) VALUES
-(1, '127.0.0.1', 'administrator', '$2y$12$XPPVFh7k8v1wd7elmTW0xu1z8GGiX0Z4Zy6/e98gP8PJ3RwYZIjlG', 'admin@admin.com', NULL, '', NULL, NULL, NULL, NULL, NULL, 1268889823, 1611617175, 1, 'Admin', 'istrator', 'ADMIN', '0');
+(1, '127.0.0.1', 'administrator', '$2y$12$XPPVFh7k8v1wd7elmTW0xu1z8GGiX0Z4Zy6/e98gP8PJ3RwYZIjlG', 'admin@admin.com', NULL, '', NULL, NULL, NULL, NULL, NULL, 1268889823, 1638224637, 1, 'Admin', 'istrator', 'ADMIN', '0'),
+(3, '::1', 'antonio.daleo', '$2y$12$jslWs5wnzB0GFYNlPNd7JuNyHx1Q/PhHBTXIUEdcgGGhbBFvhHB5q', 'antoniodaleo@outlook.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1620635048, 1631490585, 1, 'antonio', 'daleo', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -305,7 +321,8 @@ CREATE TABLE `users_groups` (
 
 INSERT INTO `users_groups` (`id`, `user_id`, `group_id`) VALUES
 (1, 1, 1),
-(2, 1, 2);
+(2, 1, 2),
+(6, 3, 1);
 
 --
 -- Índices para tabelas despejadas
@@ -396,13 +413,13 @@ ALTER TABLE `users_groups`
 -- AUTO_INCREMENT de tabela `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `categoria_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `categoria_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de tabela `categorias_pai`
 --
 ALTER TABLE `categorias_pai`
-  MODIFY `categoria_pai_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `categoria_pai_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `config_pagseguro`
@@ -420,37 +437,37 @@ ALTER TABLE `groups`
 -- AUTO_INCREMENT de tabela `login_attempts`
 --
 ALTER TABLE `login_attempts`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de tabela `marcas`
 --
 ALTER TABLE `marcas`
-  MODIFY `marca_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `marca_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de tabela `produtos`
 --
 ALTER TABLE `produtos`
-  MODIFY `produto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `produto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de tabela `produtos_fotos`
 --
 ALTER TABLE `produtos_fotos`
-  MODIFY `foto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `foto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 
 --
 -- AUTO_INCREMENT de tabela `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `users_groups`
 --
 ALTER TABLE `users_groups`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Restrições para despejos de tabelas
